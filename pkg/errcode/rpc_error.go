@@ -1,17 +1,16 @@
 package errcode
 
-import (
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
-
-	pb "Go-grpc/proto"
-)
-
 /**
 * @Author: super
-* @Date: 2020-09-25 08:36
+* @Date: 2020-09-28 10:59
 * @Description:
 **/
+
+import (
+	pb "Go-grpc/proto"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+)
 
 func TogRPCError(err *Error) error {
 	s, _ := status.New(ToRPCCode(err.Code()), err.Msg()).WithDetails(&pb.Error{Code: int32(err.Code()), Message: err.Msg()})
