@@ -28,8 +28,8 @@ type AccessToken struct {
 }
 
 const (
-	APP_KEY    = "eddycjy"
-	APP_SECRET = "go-programming-tour-book"
+	APP_KEY    = "superssssss"
+	APP_SECRET = "bedtimeStory"
 )
 
 func NewAPI(url string) *API {

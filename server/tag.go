@@ -3,11 +3,9 @@ package server
 import (
 	"Go-grpc/pkg/errcode"
 	"Go-grpc/pkg/tagApi"
+	pb "Go-grpc/proto"
 	"context"
 	"encoding/json"
-	"google.golang.org/grpc"
-
-	pb "Go-grpc/proto"
 )
 
 /**
@@ -36,9 +34,4 @@ func (t *TagServer) GetTagList(ctx context.Context, r *pb.GetTagListRequest) (*p
 		return nil, errcode.TogRPCError(errcode.Fail)
 	}
 	return &tagList, nil
-}
-
-func GetClientConn(ctx context.Context, target string, opts []grpc.DialOption) (*grpc.ClientConn, error) {
-	opts = append(opts, grpc.WithInsecure())
-	return grpc.DialContext(ctx, target, opts...)
 }

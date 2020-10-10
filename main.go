@@ -3,6 +3,7 @@ package main
 import (
 	"Go-grpc/server"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 	"log"
 	"net"
 
@@ -18,6 +19,7 @@ import (
 func main() {
 	s := grpc.NewServer()
 	pb.RegisterTagServiceServer(s, server.NewTagServer())
+	reflection.Register(s)
 
 	listener, err := net.Listen("tcp", ":5000")
 	if err != nil{
